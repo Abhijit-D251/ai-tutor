@@ -40,13 +40,13 @@ Exam Importance: {"Yes" if exam_toggle else "No"}
 Instructions:
 - Use simple words (age 11–16)
 - Add examples or diagrams if helpful (mention them in text)
-- Be short but complete
+- Be concise but complete
 - Avoid overly technical language
 """
 
                 # Call Groq ChatCompletion
                 response = client.chat.completions.create(
-                    model="mixtral-8x7b-32768",
+                    model="llama-3.3-70b-versatile",
                     messages=[
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_question},
@@ -62,7 +62,7 @@ Instructions:
                     with st.spinner("Summarizing..."):
                         summary_prompt = f"Summarize this answer in 2–3 simple lines for quick revision:\n\n{answer}"
                         summary_response = client.chat.completions.create(
-                            model="mixtral-8x7b-32768",
+                            model="llama-3.3-70b-versatile",
                             messages=[
                                 {"role": "system", "content": "You summarize long science answers simply for students."},
                                 {"role": "user", "content": summary_prompt},
